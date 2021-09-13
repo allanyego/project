@@ -2,11 +2,10 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect
+  Redirect,
 } from "react-router-dom";
 // import { Suspense } from "react";
-import React, {Component, Suspense } from "react";
-import axios from "axios";
+import React, { Suspense, useEffect, useState } from "react";
 
 import About from "./pages/About";
 import Home from "./pages/Home";
@@ -27,47 +26,81 @@ import Signin from "./pages/signin";
 import Forgot from "./pages/forgot";
 import Reset from "./pages/reset";
 import Dashboard from "./app/dashboard";
+import { AppContext } from "./utils/context";
+import { clear, getObject, setObject } from "./utils/storage";
+import { STORAGE_KEY } from "./utils/constants";
+import useMounted from "./utils/hooks/mounted";
 
+export default function App() {
+  const [user, setUser] = useState(null);
+  const [isAuthenticating, setAuthenticating] = useState(true);
 
-export default class App extends Component {
-  state = {};
+  const { isMounted, setMounted } = useMounted();
 
-  componentDidMount = () => {
-    axios.get('user.php').then(
-      res => {
-        this.setUser(res.data);
-        // this.setState({
-        //   user: res.data
-        // });
-      },
+  /**
+   * Helper to update the current user, if any.
+   *
+   * @param {*} currUser
+   * @returns void
+   */
+  const setCurrentUser = async (currUser) => {
+    if (!currUser) {
+      await clear();
+      return setUser(null);
+    }
 
-      err => {
-        console.log(err)
-      }
-    )
-  }
-
-  setUser = user => {
-    this.setState({
-      user: user
+    const newDetails = {
+      ...user,
+      ...currUser,
+    };
+    await setObject(STORAGE_KEY, {
+      currentUser: newDetails,
     });
-  }
 
-  render(){
-    return (
+    setUser(newDetails);
+  };
+
+  useEffect(() => {
+    // When component mounts, check local storage
+    getObject(STORAGE_KEY).then((data) => {
+      if (!isMounted) {
+        return;
+      }
+
+      if (data && data.currentUser) {
+        setUser(data.currentUser);
+      }
+
+      setAuthenticating(false);
+    });
+
+    return () => {
+      setMounted(false);
+    };
+  }, []);
+
+  return (
+    <AppContext.Provider value={{}}>
       <div className="App">
         <Router>
-          <Navbar user={this.state.user} setUser={this.setUser}/>
+          <Navbar user={this.state.user} setUser={this.setUser} />
           <Suspense fallback={<Loading />}>
             <Switch>
-
               <Route path="/" component={Home} exact />
               <Route path="/about" component={About} exact />
               <Route path="/contact" component={Contact} exact />
               <Route path="/register" component={Register} exact />
               <Route path="/terms" component={Terms} exact />
-              <Route path="/signin" component={() => <Signin setUser={this.setUser} />} exact />
-              <Route path="/app/" component={() => <Dashboard user={this.state.user} />} exact />
+              <Route
+                path="/signin"
+                component={() => <Signin setUser={this.setUser} />}
+                exact
+              />
+              <Route
+                path="/app/"
+                component={() => <Dashboard user={this.state.user} />}
+                exact
+              />
               <Route path="/forgot" component={Forgot} exact />
               <Route path="/reset/:id" component={Reset} exact />
               <Route path="/404" component={Lost} exact />
@@ -76,9 +109,9 @@ export default class App extends Component {
               <Route render={() => <Redirect to="/404" />} />
             </Switch>
           </Suspense>
-          <Footer user={this.state.user} setUser={this.setUser}/>
+          <Footer user={this.state.user} setUser={this.setUser} />
         </Router>
       </div>
-    )
-  }
+    </AppContext.Provider>
+  );
 }
