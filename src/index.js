@@ -10,8 +10,9 @@ import "./styles.css";
 import "./assets/css/sparkles.css";
 import "./assets/css/main.css";
 import "./assets/release/likely.css";
+import { SERVER_URL } from "./utils/constants";
 
-axios.defaults.baseURL = "https://sparklesdigital.net/api/";
+axios.defaults.baseURL = SERVER_URL;
 axios.defaults.headers.common["Authorization"] =
   "Bearer " + localStorage.getItem("token");
 // axios.defaults.headers.post['Content-Type'] = 'application/json';
