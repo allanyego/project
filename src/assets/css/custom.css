@@ -1,39 +1,39 @@
-.mobilehidden{
+.mobilehidden {
   display: none;
 }
-#navbar{
-  transition: 0.2s
+#navbar {
+  transition: 0.2s;
 }
-.navlogo{
-  height:5.8rem;
-  width:auto;
+.navlogo {
+  height: 5.8rem;
+  width: auto;
 }
-.navlogo{
-  height:5.8rem;
-  width:auto;
+.navlogo {
+  height: 5.8rem;
+  width: auto;
 }
 @media only screen and (max-width: 768px) {
-  .mobilehidden{
+  .mobilehidden {
     display: block;
   }
-  .mobileshow{
+  .mobileshow {
     display: none;
   }
-  .p-100{
+  .p-100 {
     padding: 50px 10px;
   }
-  .navbar-brand{
+  .navbar-brand {
     font-size: 1rem;
   }
   .carousel-inner {
     height: auto;
   }
-  .navlogo{
-    height:3.8rem;
-    width:auto;
+  .navlogo {
+    height: 3.8rem;
+    width: auto;
   }
 }
-footer{
+footer {
   background: #000;
 }
 .tooltip {
@@ -73,74 +73,77 @@ footer{
   visibility: visible;
   opacity: 1;
 }
-.tree, .tree ul {
-    margin:0;
-    padding:0;
-    list-style:none
+.tree,
+.tree ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 .tree ul {
-    margin-left:1em;
-    position:relative
+  margin-left: 1em;
+  position: relative;
 }
 .tree ul ul {
-    margin-left:.5em
+  margin-left: 0.5em;
 }
 .tree ul:before {
-    content:"";
-    display:block;
-    width:0;
-    position:absolute;
-    top:0;
-    bottom:0;
-    left:0;
-    border-left:1px solid
+  content: "";
+  display: block;
+  width: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  border-left: 1px solid;
 }
 .tree li {
-    margin:0;
-    padding:0 1em;
-    line-height:2em;
-    color:#369;
-    font-weight:700;
-    position:relative;
-    cursor: pointer;
+  margin: 0;
+  padding: 0 1em;
+  line-height: 2em;
+  color: #369;
+  font-weight: 700;
+  position: relative;
+  cursor: pointer;
 }
 .tree ul li:before {
-    content:"";
-    display:block;
-    width:10px;
-    height:0;
-    border-top:1px solid;
-    margin-top:-1px;
-    position:absolute;
-    top:1em;
-    left:0
+  content: "";
+  display: block;
+  width: 10px;
+  height: 0;
+  border-top: 1px solid;
+  margin-top: -1px;
+  position: absolute;
+  top: 1em;
+  left: 0;
 }
 .tree ul li:last-child:before {
-    background:#fff;
-    height:auto;
-    top:1em;
-    bottom:0
+  background: #fff;
+  height: auto;
+  top: 1em;
+  bottom: 0;
 }
 .indicator {
-    margin-right:5px;
+  margin-right: 5px;
 }
 .tree li a {
-    text-decoration: none;
-    color:#369;
+  text-decoration: none;
+  color: #369;
 }
-.tree li button, .tree li button:active, .tree li button:focus {
-    text-decoration: none;
-    color:#369;
-    border:none;
-    background:transparent;
-    margin:0px 0px 0px 0px;
-    padding:0px 0px 0px 0px;
-    outline: 0;
+.tree li button,
+.tree li button:active,
+.tree li button:focus {
+  text-decoration: none;
+  color: #369;
+  border: none;
+  background: transparent;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  outline: 0;
 }
-#verification{
+#verification {
   padding: 2rem;
   border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background: #f2f2f2;
 }
 #verification .form-control {
@@ -154,7 +157,7 @@ footer{
 #verification &:last-child {
   margin-right: 0;
 }
-.mpesa_message{
+.mpesa_message {
   color: #000;
   background-color: #fff3cd;
   border-color: #ffeeba;
@@ -165,14 +168,14 @@ footer{
   margin: 0;
   text-decoration: none;
 }
-.mpesa_message:hover{
+.mpesa_message:hover {
   text-decoration: none;
   border: 1px solid #ff9f1c;
   box-shadow: 0 2px 8px 1px rgb(64 60 67 / 24%);
 }
-.connect:hover{
+.connect:hover {
   text-decoration: none;
 }
-.text-blue{
+.text-blue {
   color: #2196f3;
 }

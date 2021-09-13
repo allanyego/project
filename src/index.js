@@ -1,13 +1,19 @@
-import React from 'react';
-import reportWebVitals from './reportWebVitals';
-// import { StrictMode } from "react";
+import React from "react";
+import reportWebVitals from "./reportWebVitals";
 import ReactDOM from "react-dom";
+import axios from "axios";
+// import { StrictMode } from "react";
 
 import App from "./App";
-import axios from "axios";
 
-axios.defaults.baseURL = 'https://sparklesdigital.net/api/';
-axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');
+import "./styles.css";
+import "./assets/css/sparkles.css";
+import "./assets/css/main.css";
+import "./assets/release/likely.css";
+
+axios.defaults.baseURL = "https://sparklesdigital.net/api/";
+axios.defaults.headers.common["Authorization"] =
+  "Bearer " + localStorage.getItem("token");
 // axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 // axios.interceptors.request.use(request => {
@@ -36,7 +42,6 @@ axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getIte
 //   rootElement
 // );
 
-
 // import './index.scss';
 // import '../node_modules/bootstrap/scss/bootstrap.scss';
 
@@ -46,12 +51,9 @@ axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getIte
 
 ReactDOM.render(
   <React.StrictMode>
-
     <App />
-
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
-
 
 reportWebVitals();
