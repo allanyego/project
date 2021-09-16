@@ -60,7 +60,7 @@ export default function App() {
         setUser(data.currentUser);
       }
 
-      // setAuthenticating(false);
+      setAuthenticating(false);
     });
 
     return () => {
