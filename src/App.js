@@ -22,6 +22,7 @@ const Dashboard = lazy(() => import("./pages/Dashboard"));
 
 export default function App() {
   const [user, setUser] = useState(null);
+  const [notifications, setNotifications] = useState([]);
   const [isAuthenticating, setAuthenticating] = useState(true);
 
   const { isMounted, setMounted } = useMounted();
@@ -73,6 +74,8 @@ export default function App() {
       value={{
         currentUser: user,
         setCurrentUser,
+        notifications,
+        setNotifications,
       }}
     >
       <div className="App">
@@ -88,11 +91,7 @@ export default function App() {
                 <Route path="/contact" component={Contact} exact />
                 <Route path="/register" component={Register} exact />
                 <Route path="/terms" component={Terms} exact />
-                <Route
-                  path="/signin"
-                  component={() => <Signin setUser={this.setUser} />}
-                  exact
-                />
+                <Route path="/signin" component={() => <Signin />} exact />
                 <Route
                   path="/app/"
                   component={() => <Dashboard user={this.state.user} />}
